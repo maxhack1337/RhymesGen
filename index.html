@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Генератор изображений</title>
+</head>
+<body>
+    <h1>Генератор изображений</h1>
+    <input type="text" id="text-input" placeholder="Введите текст">
+    <select id="font-size">
+        <option value="24">Маленький</option>
+        <option value="36">Средний</option>
+        <option value="48">Большой</option>
+    </select>
+    <select id="text-color">
+        <option value="black">Черный</option>
+        <option value="red">Красный</option>
+        <option value="blue">Синий</option>
+    </select>
+    <button onclick="generateImage()">Создать изображение</button>
+    <br>
+    <div id="image-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
