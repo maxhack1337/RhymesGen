@@ -1,3 +1,24 @@
+document.addEventListener("DOMContentLoaded", function iss() {
+    // Ваш код для работы с DOM-деревом и элементами страницы здесь
+
+var bgChooseSelect = document.getElementById("bgchoose");
+var textInputE = document.getElementById("text-input-e");
+var isEmoji = false;
+bgChooseSelect.addEventListener("change", function () {
+    var selectedValue = bgChooseSelect.value;
+
+    // Проверяем, выбрано ли значение "Эмодзи"
+    if (selectedValue === "Эмодзи") {
+        // Если выбрано "Эмодзи", устанавливаем стиль "display: block" для text-input-e
+        isEmoji = true;
+    } else {
+        // В противном случае устанавливаем стиль "display: none"
+        isEmoji = false;
+    }
+});
+});
+
+
 var customFontMain = new FontFace('rhymesMain', 'url(rhymesMain.woff2)');
 var customFontPseudo = new FontFace('rhymesPseudo', 'url(rhymesPseudo.woff2)');
 
@@ -27,6 +48,7 @@ function generateImage() {
 
     var canvas = document.getElementById("image-canvas");
     var context = canvas.getContext("2d");
+	context.clearRect(0, 0, canvas.width, canvas.height);
 
     // Загрузка пользовательского фонового изображения
     var imageUpload = document.getElementById("image-upload");
@@ -37,15 +59,16 @@ function generateImage() {
         userImage.onload = function () {
             // Рисовать пользовательское изображение как фон
             context.drawImage(userImage, 0, 0, canvas.width, 1195);
-
+			var bgChoose = document.getElementById("bgchoose");
             // Загрузка изображения "bgPseudo.png"
             var bgImage = new Image();
-            bgImage.src = "bgPseudoWater.png";
+            bgImage.src = "assets/bgPseudo"+bgChoose.value+"Water.png";
 
             // Проверяем состояние чекбокса
             var waterMarkCheckbox = document.getElementById("waterMark");
+			
             if (waterMarkCheckbox.checked) {
-                bgImage.src = "bgPseudo.png"; // Если чекбокс активен, используем изображение с водяным знаком
+                bgImage.src = "assets/bgPseudo"+bgChoose.value+".png"; // Если чекбокс активен, используем изображение с водяным знаком
             }
 
             bgImage.onload = function () {
@@ -53,6 +76,11 @@ function generateImage() {
                 context.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
 
                 // Получить значения из полей ввода
+				var emojiRun = document.querySelector(".emojioneemoji").getAttribute("src");
+				var emojiText = emojiRun;
+
+				
+				
                 var text = document.getElementById("text-input").value;
                 var fontSize = document.getElementById("font-size").value;
                 var textColor = document.getElementById("text-color").value;
@@ -109,6 +137,16 @@ function generateImage() {
                     x = 970 + 256;
                 }
 
+				if(document.getElementById("bgchoose").value === "Эмодзи"){
+				var emo = new Image();
+				emo.src = emojiRun;
+				var xxx = canvas.width / 2 - emo.width / 2 - 22;
+				emo.onload = function() {
+					
+					context.drawImage(emo, xxx, 802, 128, 128);
+				};
+				
+				}
                 // Настроить шрифт и цвет текста
                 context.font = fontSize + "px 'rhymesMain', Arial, sans-serif";
                 context.fillStyle = textColor;
@@ -230,3 +268,14 @@ for (var i = 0; i < textParts.length; i++) {
 
 // Обработчик для кнопки
 document.getElementById("generate-button").addEventListener("click", generateImage);
+
+document.addEventListener("click", function() {
+  generateImage();
+});
+
+// Обработчик для нажатия клавиши
+document.addEventListener("keydown", function(event) {
+    generateImage();
+});
+
+

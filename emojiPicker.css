@@ -1,0 +1,32 @@
+/* emoji-picker.css */
+
+.emoji-picker {
+    display: none;
+    position: absolute;
+    bottom: 40px;
+    right: 0;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.emoji-picker button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.emoji-picker img {
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.emoji-picker img:hover {
+    background-color: #f0f0f0;
+}

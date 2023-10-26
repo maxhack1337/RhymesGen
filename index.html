@@ -4,11 +4,24 @@
 <link rel="stylesheet" type="text/css" href="styles.css">
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/emojionearea@3.0.0/dist/emojionearea.min.css">
+<script src="https://cdn.jsdelivr.net/npm/emojionearea@3.0.0/dist/emojionearea.min.js"></script>
+
     <title>Rhymes Image Generator by @notmaxhack</title>
 	<style>
 	#font-size,#font-size1,#font-size2,#font-size3,#font-size4
 	{
 		width:60px;
+	}
+	#bgchoose
+	{
+	position:absolute;
+	margin-top:-20px;
+	}
+	h6
+	{
+	margin-top:6px;
 	}
 	h3,h4,h5
 	{
@@ -45,8 +58,17 @@
 	#waterMark
 	{
 		position:absolute;
-		margin-top:-36px;
-		margin-left:130px;
+		margin-top:18px;
+		margin-left:316px;
+	}
+	#text-input-e
+	{
+		width:100px;
+	}
+	.emojionearea.emojionearea-inline
+	{
+	width:160px;
+	height:30px;
 	}
 	</style>
 </head>
@@ -65,6 +87,7 @@
 		<option value="32">32px</option>
 		<option value="48">48px</option>
 		<option value="64" selected >64px</option>
+		<option value="128">128px</option>
 	</select>
 	<input type="color" id="text-color" name="color-picker" value="#ffffff">
 	</div>
@@ -79,6 +102,7 @@
 		<option value="32">32px</option>
 		<option value="48">48px</option>
 		<option value="64" selected >64px</option>
+		<option value="128">128px</option>
 	</select>
 	<input type="color" id="text-color1" name="color-picker" value="#ffffff">
 	</div>
@@ -93,6 +117,7 @@
 		<option value="32">32px</option>
 		<option value="48">48px</option>
 		<option value="64" selected >64px</option>
+		<option value="128">128px</option>
 	</select>
 	<input type="color" id="text-color2" name="color-picker" value="#ffffff">
 	</div>
@@ -107,6 +132,7 @@
 		<option value="32">32px</option>
 		<option value="48">48px</option>
 		<option value="64" selected >64px</option>
+		<option value="128">128px</option>
 	</select>
 	<input type="color" id="text-color3" name="color-picker" value="#ffffff">
 	</div>
@@ -121,14 +147,37 @@
 		<option value="32">32px</option>
 		<option value="48">48px</option>
 		<option value="64">64px</option>
+		<option value="128">128px</option>
 	</select>
 	<input type="color" id="text-color4" name="color-picker" value="#ffffff">
+	<h6>если обособить слово звездочками(*) то оно станет жирным<h6>
 	</div>
-	<h5>Убрать вотермарку<h5><input type="checkbox" id="waterMark">
+	<h5>Изменить цвет кавычек<h5>
+	 <select id="bgchoose">
+		<option value="Белый">Белый</option>
+		<option value="Голубой">Голубой</option>
+		<option value="Жёлтый">Жёлтый</option>
+		<option value="Зелёный">Зелёный</option>
+		<option value="Розовый">Розовый</option>
+		<option value="Чёрный" selected >Чёрный</option>
+		<option value="Яд">Яд</option>
+		<option value="Эмодзи">Использовать эмодзи вместо кавычек</option>
+	</select>
+	<input type="text" id="text-input-e" style="display:none;" placeholder="Введите эмодзи">
+	<h5 style="position:absolute;margin-top:16px; margin-left:186px;">Убрать вотермарку<h5><input type="checkbox" id="waterMark">
     <button id="generate-button">Создать изображение</button>
     <br>
     <canvas id="image-canvas" width="1280" height="1280"></canvas>
 
     <script src="script.js"></script>
+	<script>
+    $(document).ready(function () {
+        $("#text-input-e").emojioneArea({
+            pickerPosition: "bottom"
+        });
+    });
+</script>
+
+	 
 </body>
 </html>
