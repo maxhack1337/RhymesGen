@@ -5,7 +5,7 @@ $fontSize = $_GET['fontSize'];
 $textColor = $_GET['textColor'];
 
 // Создать изображение
-$image = imagecreate(800, 400);
+$image = imagecreatetruecolor(800, 400);
 $backgroundColor = imagecolorallocate($image, 255, 255, 255);
 $color = imagecolorallocate($image, 0, 0, 0);
 $font = "arial.ttf"; // Укажите путь к шрифту
