@@ -1,24 +1,133 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Генераатор изображений</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Rhymes Image Generator by @notmaxhack</title>
+	<style>
+	#font-size,#font-size1,#font-size2,#font-size3,#font-size4
+	{
+		width:60px;
+	}
+	h3,h4,h5
+	{
+		font-family: rhymesMain;
+	}
+	.numberText
+	{
+		position:absolute;
+		margin-top:12px;
+	}
+	.strokeSettings
+	{
+	margin-left:80px;
+	margin-top:-6px;
+	}
+	.strokeSettingsP
+	{
+	margin-top:-36px;
+	}
+	input[type="color"]
+	{
+	border: 0!important;
+    border-radius: 3px;
+    background: none;
+    inline-size: 40px;
+    block-size: 28px;
+    cursor: pointer!important;
+	margin-top:10px;
+	}
+	#generate-button
+	{
+	margin-top:10px;
+	}
+	#waterMark
+	{
+		position:absolute;
+		margin-top:-36px;
+		margin-left:130px;
+	}
+	</style>
 </head>
 <body>
-    <h1>Генератор изображений</h1>
-    <input type="text" id="text-input" placeholder="Введите текст">
+	<h3>Генератор изображений в стиле цитат "Рифмы и Панчи"</h3>
+	<h4>Загрузить фон<h4>
+	<input type="file" id="image-upload" accept="image/*">
+	<h4>Основной текст<h4>
+    <div class="numberText">1 строка</div>
+	<div class="strokeSettings">
+	<input type="text" id="text-input" placeholder="Введите текст">
     <select id="font-size">
-        <option value="24">Маленький</option>
-        <option value="36">Средний</option>
-        <option value="48">Большой</option>
-    </select>
-    <select id="text-color">
-        <option value="black">Черный</option>
-        <option value="red">Красный</option>
-        <option value="blue">Синий</option>
-    </select>
-    <button onclick="generateImage()">Создать изображение</button>
+		<option value="8">8px</option>
+		<option value="16">16px</option>
+		<option value="24">24px</option>
+		<option value="32">32px</option>
+		<option value="48">48px</option>
+		<option value="64" selected >64px</option>
+	</select>
+	<input type="color" id="text-color" name="color-picker" value="#ffffff">
+	</div>
+	
+	<div class="numberText">2 строка</div>
+	<div class="strokeSettings">
+	<input type="text" id="text-input1" placeholder="Введите текст">
+    <select id="font-size1">
+		<option value="8">8px</option>
+		<option value="16">16px</option>
+		<option value="24">24px</option>
+		<option value="32">32px</option>
+		<option value="48">48px</option>
+		<option value="64" selected >64px</option>
+	</select>
+	<input type="color" id="text-color1" name="color-picker" value="#ffffff">
+	</div>
+	
+	<div class="numberText">3 строка</div>
+	<div class="strokeSettings">
+	<input type="text" id="text-input2" placeholder="Введите текст">
+    <select id="font-size2">
+		<option value="8">8px</option>
+		<option value="16">16px</option>
+		<option value="24">24px</option>
+		<option value="32">32px</option>
+		<option value="48">48px</option>
+		<option value="64" selected >64px</option>
+	</select>
+	<input type="color" id="text-color2" name="color-picker" value="#ffffff">
+	</div>
+	
+	<div class="numberText">4 строка</div>
+	<div class="strokeSettings">
+	<input type="text" id="text-input3" placeholder="Введите текст">
+    <select id="font-size3">
+		<option value="8">8px</option>
+		<option value="16">16px</option>
+		<option value="24">24px</option>
+		<option value="32">32px</option>
+		<option value="48">48px</option>
+		<option value="64" selected >64px</option>
+	</select>
+	<input type="color" id="text-color3" name="color-picker" value="#ffffff">
+	</div>
+	
+<h4>Текст автора цитаты<h4>
+	<div class="strokeSettingsP">
+	<input type="text" id="text-input4" placeholder="Введите текст">
+    <select id="font-size4">
+		<option value="8">8px</option>
+		<option value="16">16px</option>
+		<option value="24" selected>24px</option>
+		<option value="32">32px</option>
+		<option value="48">48px</option>
+		<option value="64">64px</option>
+	</select>
+	<input type="color" id="text-color4" name="color-picker" value="#ffffff">
+	</div>
+	<h5>Убрать вотермарку<h5><input type="checkbox" id="waterMark">
+    <button id="generate-button">Создать изображение</button>
     <br>
-    <canvas id="image-canvas" width="800" height="400"></canvas>
+    <canvas id="image-canvas" width="1280" height="1280"></canvas>
 
     <script src="script.js"></script>
 </body>

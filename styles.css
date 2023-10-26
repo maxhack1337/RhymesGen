@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'rhymesMain';
+    src: url('rhymesMain.woff2') format('woff2');
+	}
+@font-face {
+    font-family: 'rhymesPseudo';
+    src: url('rhymesPseudo.woff2') format('woff2');
+	}
