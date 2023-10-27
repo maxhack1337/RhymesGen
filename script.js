@@ -144,7 +144,7 @@ function generateImage() {
 				var xxx = canvas.width / 2 - emo.width / 2 - 22;
 				emo.onload = function() {
 					
-					context.drawImage(emo, xxx, 802, 128, 128);
+					context.drawImage(emo, xxx, 802+parseInt(document.getElementById("bg-input-start").value), 128, 128);
 				};
 				
 				}
