@@ -415,7 +415,7 @@
 	
 
     emojioneReady(function() {
-		var emojipather = "http://p91440z6.beget.tech/lib/img/apple/emoji_ios_";
+		var emojipather = "lib/img/apple/emoji_ios_";
 		console.log(emojipather);
         emojione.imagePathPNG = emojipather;
         uniRegexp = new RegExp("<object[^>]*>.*?<\/object>|<span[^>]*>.*?<\/span>|<(?:object|embed|svg|img|div|span|p|a)[^>]*>|("+
