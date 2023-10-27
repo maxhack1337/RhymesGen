@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function iss() {
 var bgChooseSelect = document.getElementById("bgchoose");
 var textInputE = document.getElementById("text-input-e");
 var isEmoji = false;
+
+ 
 bgChooseSelect.addEventListener("change", function () {
     var selectedValue = bgChooseSelect.value;
 
@@ -62,20 +64,19 @@ function generateImage() {
 			var bgChoose = document.getElementById("bgchoose");
             // Загрузка изображения "bgPseudo.png"
             var bgImage = new Image();
-            bgImage.src = "assets/bgPseudo"+bgChoose.value+"Water.png";
 
             // Проверяем состояние чекбокса
-            var waterMarkCheckbox = document.getElementById("waterMark");
-			
-            if (waterMarkCheckbox.checked) {
-                bgImage.src = "assets/bgPseudo"+bgChoose.value+".png"; // Если чекбокс активен, используем изображение с водяным знаком
-            }
+            
 
-            bgImage.onload = function () {
+				bgImage.src = "assets/bgPseudo"+bgChoose.value+".png";
+				bgImage.onload = function () {
                 // Рисовать изображение "bgPseudo.png" поверх пользовательского фона
-                context.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+                context.drawImage(bgImage, 0, parseInt(document.getElementById("bg-input-start").value), canvas.width, canvas.height);
 
                 // Получить значения из полей ввода
+				
+				
+			
 				var emojiRun = document.querySelector(".emojioneemoji").getAttribute("src");
 				var emojiText = emojiRun;
 
@@ -108,7 +109,7 @@ function generateImage() {
 				text4 = text4.toUpperCase();
 
 
-                var x = 950;
+                var x = parseInt(document.getElementById("text-input-start").value);
 
                 var emptyCount = 0;
 
@@ -126,15 +127,15 @@ function generateImage() {
                 }
 
                 if (emptyCount === 0) {
-                    x = 970;
+                    x +=20;
                 } else if (emptyCount === 1) {
-                    x = 970 + 64;
+                    x += 84;
                 } else if (emptyCount === 2) {
-                    x = 970 + 128;
+                    x += 148;
                 } else if (emptyCount === 3) {
-                    x = 970 + 192;
+                    x += 212;
                 } else if (emptyCount === 4) {
-                    x = 970 + 256;
+                    x += 276;
                 }
 
 				if(document.getElementById("bgchoose").value === "Эмодзи"){
@@ -258,7 +259,16 @@ for (var i = 0; i < textParts.length; i++) {
     // Обновляем текущую позицию x для следующей части текста
     startX += textMetricsPart.width;
 }
-
+			var bgImageWater = new Image();
+			bgImageWater.src = "assets/Water.png";
+			bgImageWater.onload = function () {
+			var waterMarkCheckbox = document.getElementById("waterMark");
+			
+            if (!waterMarkCheckbox.checked) {
+				 context.drawImage(bgImageWater, 0,0, canvas.width, canvas.height);
+				 console.log("Нарисовал вотерку");
+            }
+			}
 }
 
             };
