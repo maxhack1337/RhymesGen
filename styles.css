@@ -6,3 +6,11 @@
     font-family: 'rhymesPseudo';
     src: url('rhymesPseudo.woff2') format('woff2');
 	}
+@font-face {
+    font-family: 'rhymesPseudo1';
+    src: url('rhymesPseudo1.woff2') format('woff2');
+	}
+@font-face {
+    font-family: 'rhymesMain1';
+    src: url('rhymesMain1.woff2') format('woff2');
+	}

@@ -65,13 +65,19 @@
 	}
 	#generate-button
 	{
-	margin-top:10px;
+	margin-top:20px;
 	}
 	#waterMark
 	{
 		position:absolute;
-		margin-top:-12px;
+		margin-top:-2px;
 		margin-left:6px;
+	}
+	#altfont
+	{
+		position:absolute;
+		margin-top:-22px;
+		margin-left:-69px;
 	}
 	#text-input-e,#text-input-start,#bg-input-start
 	{
@@ -173,7 +179,7 @@
 	<input type="color" id="text-color4" name="color-picker" value="#ffffff">
 	<h6>если обособить слово звездочками(*) то оно станет жирным<h6>
 	</div>
-	<h5>Изменить цвет кавычек<h5>
+	<h5>Изменить цвет блока кавычек<h5>
 	 <select id="bgchoose">
 		<option value="Белый">Белый</option>
 		<option value="БелыйСтандарт">Белый(стандарт)</option>
@@ -185,12 +191,14 @@
 		<option value="Чёрный" selected >Чёрный</option>
 		<option value="Яд">Яд</option>
 		<option value="Эмодзи">Использовать эмодзи вместо кавычек</option>
+		<option value="Пустой">Без кавычек и эмодзи</option>
 	</select>
 	<input type="text" id="text-input-e" style="display:none;" placeholder="Введите эмодзи">
 	
 	<div>Стартовая позиция кавычек</div>
 	<input type="text" id="bg-input-start" placeholder="Стартовая позиция" value="0">
-	<h5 style="position:absolute;margin-top:-12px; margin-left:590px;">Убрать вотермарку<h5><input type="checkbox" id="waterMark">
+	<h5 style="position:absolute;margin-top:-22px; margin-left:590px;">Убрать курсив у шрифта<h5><input type="checkbox" id="altfont">
+	<h5 style="position:absolute;margin-top:-2px; margin-left:590px;">Убрать вотермарку<h5><input type="checkbox" id="waterMark">
     <button id="generate-button">Создать изображение</button>
     <br>
     <canvas id="image-canvas" width="1280" height="1280"></canvas>

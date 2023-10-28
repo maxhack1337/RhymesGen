@@ -20,15 +20,25 @@ bgChooseSelect.addEventListener("change", function () {
 });
 });
 
-
+var customFontMain1 = new FontFace('rhymesMain1', 'url(rhymesMain1.woff2)');
+var customFontPseudo1 = new FontFace('rhymesPseudo1', 'url(rhymesPseudo1.woff2)');
 var customFontMain = new FontFace('rhymesMain', 'url(rhymesMain.woff2)');
 var customFontPseudo = new FontFace('rhymesPseudo', 'url(rhymesPseudo.woff2)');
+var useAltFont = false;
+
+var altFontCheckbox = document.getElementById("altfont");
+altFontCheckbox.addEventListener("change", function () {
+    useAltFont = altFontCheckbox.checked;
+});
+
 
 // Флаги для отслеживания загрузки каждого шрифта
 var mainFontLoaded = false;
 var pseudoFontLoaded = false;
+var mainFontLoaded1 = false;
+var pseudoFontLoaded1 = false;
 
-Promise.all([customFontMain.load(), customFontPseudo.load()]).then(function (loadedFonts) {
+Promise.all([customFontMain.load(), customFontPseudo.load(),customFontMain1.load(), customFontPseudo1.load()]).then(function (loadedFonts) {
     loadedFonts.forEach(function (font) {
         document.fonts.add(font);
     });
@@ -40,10 +50,16 @@ Promise.all([customFontMain.load(), customFontPseudo.load()]).then(function (loa
     if (loadedFonts[1].family === 'rhymesPseudo') {
         pseudoFontLoaded = true;
     }
+	if (loadedFonts[2].family === 'rhymesMain1') {
+        mainFontLoaded1 = true;
+    }
+    if (loadedFonts[3].family === 'rhymesPseudo1') {
+        pseudoFontLoaded1 = true;
+    }
 });
 
 function generateImage() {
-    if (!(mainFontLoaded && pseudoFontLoaded)) {
+    if (!(mainFontLoaded && pseudoFontLoaded && mainFontLoaded1 && pseudoFontLoaded1)) {
         // Если один из шрифтов не загружен, не выполнять код
         return;
     }
@@ -149,26 +165,42 @@ function generateImage() {
 				
 				}
                 // Настроить шрифт и цвет текста
-                context.font = fontSize + "px 'rhymesMain', Arial, sans-serif";
+                if (useAltFont) {
+    context.font = fontSize + "px 'rhymesMain1', Arial, sans-serif";
+} else {
+    context.font = fontSize + "px 'rhymesMain', Arial, sans-serif";
+}
                 context.fillStyle = textColor;
 
                 // Нарисовать текст на холсте
                 var textMetrics = context.measureText(text);
                 context.fillText(text, (canvas.width - textMetrics.width) / 2, x);
 
-                context.font = fontSize1 + "px 'rhymesMain', Arial, sans-serif";
+                if (useAltFont) {
+    context.font = fontSize1 + "px 'rhymesMain1', Arial, sans-serif";
+} else {
+    context.font = fontSize1 + "px 'rhymesMain', Arial, sans-serif";
+}
                 context.fillStyle = textColor1;
                 var y1 = parseInt(fontSize1) + x + 10;
                 var textMetrics1 = context.measureText(text1);
                 context.fillText(text1, (canvas.width - textMetrics1.width) / 2, y1);
 
-                context.font = fontSize2 + "px 'rhymesMain', Arial, sans-serif";
+                if (useAltFont) {
+    context.font = fontSize2 + "px 'rhymesMain1', Arial, sans-serif";
+} else {
+    context.font = fontSize2 + "px 'rhymesMain', Arial, sans-serif";
+}
                 context.fillStyle = textColor2;
                 var y2 = parseInt(fontSize2) + parseInt(fontSize1) + x + 20;
                 var textMetrics2 = context.measureText(text2);
                 context.fillText(text2, (canvas.width - textMetrics2.width) / 2, y2);
 
-                context.font = fontSize3 + "px 'rhymesMain', Arial, sans-serif";
+                if (useAltFont) {
+    context.font = fontSize3 + "px 'rhymesMain1', Arial, sans-serif";
+} else {
+    context.font = fontSize3 + "px 'rhymesMain', Arial, sans-serif";
+}
                 context.fillStyle = textColor3;
                 var y3 = parseInt(fontSize3) + parseInt(fontSize2) + parseInt(fontSize1) + x + 30;
                 var textMetrics3 = context.measureText(text3);
@@ -206,9 +238,17 @@ for (var i = 0; i < textParts.length; i++) {
     var useRhymesMainFont = i % 2 === 1; // Проверяем, нужно ли применять шрифт 'rhymesMain' внутри звездочек
 
     if (useRhymesMainFont) {
-        context.font = fontSize4 + "px 'rhymesMain', Arial, sans-serif";
+        if (useAltFont) {
+    context.font = fontSize4 + "px 'rhymesMain1', Arial, sans-serif";
+} else {
+    context.font = fontSize4 + "px 'rhymesMain', Arial, sans-serif";
+}
     } else {
-        context.font = fontSize4 + "px 'rhymesPseudo', Arial, sans-serif";
+        if (useAltFont) {
+    context.font = fontSize4 + "px 'rhymesPseudo1', Arial, sans-serif";
+} else {
+    context.font = fontSize4 + "px 'rhymesPseudo', Arial, sans-serif";
+}
     }
 
     var textMetricsPart = context.measureText(textPart);
@@ -230,9 +270,17 @@ for (var i = 0; i < textParts.length; i++) {
     var useRhymesMainFont = i % 2 === 1; // Проверяем, нужно ли применять шрифт 'rhymesMain' внутри звездочек
 
     if (useRhymesMainFont) {
-        context.font = fontSize4 + "px 'rhymesMain', Arial, sans-serif";
+        if (useAltFont) {
+    context.font = fontSize4 + "px 'rhymesMain1', Arial, sans-serif";
+} else {
+    context.font = fontSize4 + "px 'rhymesMain', Arial, sans-serif";
+}
     } else {
-        context.font = fontSize4 + "px 'rhymesPseudo', Arial, sans-serif";
+        if (useAltFont) {
+    context.font = fontSize4 + "px 'rhymesPseudo1', Arial, sans-serif";
+} else {
+    context.font = fontSize4 + "px 'rhymesPseudo', Arial, sans-serif";
+}
     }
 
     var textMetricsPart = context.measureText(textPart);
@@ -248,9 +296,17 @@ for (var i = 0; i < textParts.length; i++) {
     var useRhymesMainFont = i % 2 === 1; // Проверяем, нужно ли применять шрифт 'rhymesMain' внутри звездочек
 
     if (useRhymesMainFont) {
-        context.font = fontSize4 + "px 'rhymesMain', Arial, sans-serif";
+        if (useAltFont) {
+    context.font = fontSize4 + "px 'rhymesMain1', Arial, sans-serif";
+} else {
+    context.font = fontSize4 + "px 'rhymesMain', Arial, sans-serif";
+}
     } else {
-        context.font = fontSize4 + "px 'rhymesPseudo', Arial, sans-serif";
+        if (useAltFont) {
+    context.font = fontSize4 + "px 'rhymesPseudo1', Arial, sans-serif";
+} else {
+    context.font = fontSize4 + "px 'rhymesPseudo', Arial, sans-serif";
+}
     }
 
     var textMetricsPart = context.measureText(textPart);
