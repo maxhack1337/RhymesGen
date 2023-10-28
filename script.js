@@ -344,4 +344,25 @@ document.addEventListener("keydown", function(event) {
     generateImage();
 });
 
+var saveButton = document.getElementById("save-button");
+var canvas = document.getElementById("image-canvas");
+console.log(canvas);
+saveButton.addEventListener("click", function () {
+    canvas.toBlob(function (blob) {
+        var url = URL.createObjectURL(blob);
+
+        // Создаем временную ссылку для скачивания
+        var downloadLink = document.createElement("a");
+        downloadLink.href = url;
+        downloadLink.download = "generated-image.png"; // Имя файла для сохранения
+
+        // Симулируем клик по элементу <a> для начала скачивания
+        downloadLink.click();
+
+        // Освобождаем ресурсы
+        URL.revokeObjectURL(url);
+    });
+});
+
+
 
