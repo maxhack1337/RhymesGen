@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/%D0%A1%D0%B3%D0%B5%D0%BD%D0%B5%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%BA%D0%B0%D1%80%D1%82%D0%B8%D0%BD%D0%BA%D1%83-%23ffea03?style=for-the-badge"/>
   </a>
   <a href="https://github.com/maxhack1337/vk_enhancer">
-  <img src="https://img.shields.io/badge/-VK%23ENHANCER-blue?style=for-the-badge&logo=vk&color=0077FF"></img>
+  <img src="https://img.shields.io/badge/-VK%22ENHANCER-blue?style=for-the-badge&logo=vk&color=0077FF"></img>
   </a>
 </div>
 
