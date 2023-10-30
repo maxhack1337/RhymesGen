@@ -197,7 +197,8 @@ if(useBebas)
 	context.lineHeight = 5.5;
 }
 				var parts = text.split(/\((.*?)\)/); 
-				var textMetrics = context.measureText(text);
+				var proceedText = text.replace(/[()]/g, '');
+				var textMetrics = context.measureText(proceedText);
 				var startx = (canvas.width - textMetrics.width) / 2;
 				for (var i = 0; i < parts.length; i++) {
     if (i % 2 === 0) {
@@ -228,7 +229,8 @@ if(useBebas)
 				
 				var y1 = parseInt(fontSize1) + x + 10;
 				var parts1 = text1.split(/\((.*?)\)/); 
-				var textMetrics1 = context.measureText(text1);
+				var proceedText1 = text1.replace(/[()]/g, '');
+				var textMetrics1 = context.measureText(proceedText1);
 				var startx1 = (canvas.width - textMetrics1.width) / 2;
 				for (var i = 0; i < parts1.length; i++) {
     if (i % 2 === 0) {
@@ -252,7 +254,8 @@ if(useBebas)
 }
                 var y2 = parseInt(fontSize1) + parseInt(fontSize2) + x + 20;
 				var parts2 = text2.split(/\((.*?)\)/); 
-				var textMetrics2 = context.measureText(text2);
+				var proceedText2 = text2.replace(/[()]/g, '');
+				var textMetrics2 = context.measureText(proceedText2);
 				var startx2 = (canvas.width - textMetrics2.width) / 2;
 				for (var i = 0; i < parts2.length; i++) {
     if (i % 2 === 0) {
@@ -277,7 +280,8 @@ if(useBebas)
 }
                 var y3 = parseInt(fontSize3) + parseInt(fontSize1) + parseInt(fontSize2) + x + 30;
 				var parts3 = text3.split(/\((.*?)\)/); 
-				var textMetrics3 = context.measureText(text3);
+				var proceedText3 = text3.replace(/[()]/g, '');
+				var textMetrics3 = context.measureText(proceedText3);
 				var startx3 = (canvas.width - textMetrics3.width) / 2;
 				for (var i = 0; i < parts3.length; i++) {
     if (i % 2 === 0) {
