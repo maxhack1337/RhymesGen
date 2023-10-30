@@ -194,6 +194,7 @@ function generateImage() {
 if(useBebas)
 {
 	context.font = fontSize + "px 'bebasMain', Arial, sans-serif";
+	context.lineHeight = 5.5;
 }
 				var parts = text.split(/\((.*?)\)/); 
 				var textMetrics = context.measureText(text);
@@ -221,6 +222,7 @@ if(useBebas)
 if(useBebas)
 {
 	context.font = fontSize1 + "px 'bebasMain', Arial, sans-serif";
+	context.lineHeight = 5.5;
 }
 
 				
@@ -271,6 +273,7 @@ if(useBebas)
 if(useBebas)
 {
 	context.font = fontSize3 + "px 'bebasMain', Arial, sans-serif";
+	context.lineHeight = 5.5;
 }
                 var y3 = parseInt(fontSize3) + parseInt(fontSize1) + parseInt(fontSize2) + x + 30;
 				var parts3 = text3.split(/\((.*?)\)/); 

@@ -9,106 +9,211 @@
 <script src="emojis.js"></script>
 
     <title>Rhymes Image Generator by @notmaxhack</title>
-	<style>
-	body {
-     display: flex;
-    justify-content: center;
+	 <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+			display: flex;
+			flex-direction: column;
+        }
+		
+		.footer
+		{
+		display: flex;
     align-items: center;
-    min-height: 100vh;
-    margin: 0;
+    text-align: center;
+    margin-top: 60px;
+	padding-bottom:20px;
+		}
+		
+		.header {
+    display: flex;
+	flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
 }
-.container {
-    text-align: center; /* Центрировать текст по горизонтали */
+.footer img[alt="VK Enhancer"] {
+    width: 200px;
+    height: 50.5681818182px;
+	margin-top:-30px;
 }
-	#font-size,#font-size1,#font-size2,#font-size3,#font-size4
-	{
-		width:60px;
-	}
-	#bgchoose
-	{
-	position:absolute;
-	margin-top:-20px;
-	margin-left:-130px;
-	}
-	h6
-	{
-	margin-top:6px;
-	}
-	h3,h4,h5,h6, .numberText, #textstart
-	{
-		font-family: rhymesMain;
-	}
-	.numberText
-	{
-		position:absolute;
-		margin-top:12px;
-		margin-left:455px;
-	}
-	.strokeSettings
-	{
-	margin-left:80px;
-	margin-top:-6px;
-	}
-	.strokeSettingsP
-	{
-	margin-top:-36px;
-	}
-	input[type="color"]
-	{
-	border: 0!important;
-    border-radius: 3px;
-    background: none;
-    inline-size: 40px;
-    block-size: 28px;
-    cursor: pointer!important;
-	margin-top:10px;
-	}
-	#generate-button
-	{
-	margin-top:40px;
-	}
-	#waterMark
-	{
-		position:absolute;
-		margin-top:18px;
-		margin-left:91px;
-	}
-	#altfont
-	{
-		position:absolute;
-		margin-top:-2px;
-		margin-left:-69px;
-	}
-	#bebas
-	{
-		position:absolute;
-		margin-top:-22px;
-		margin-left:-69px;
-	}
-	#text-input-e,#text-input-start,#bg-input-start
-	{
-		width:40px;
-	}
-	.emojionearea.emojionearea-inline
-	{
-	margin-left:560px;
-	width:160px;
-	height:30px;
-	}
-	div.emojionearea-emojis-list > div.emojionearea-category > h1
-	{
-	color:#fff!important;
-	}
-	#image-canvas
-	{
-	scale:.85;
-	}
-	</style>
+.header img[alt="RhymesGen"] {
+    width: 800px;
+    height: 280px;
+}
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        h3 {
+            font-size: 24px;
+            color: #333;
+			font-family:'rhymesMain1';
+        }
+        h4 {
+            font-size: 18px;
+            color: #333;
+			font-family:'rhymesMain1';
+        }
+        h5 {
+            font-size: 16px;
+            color: #333;
+			font-family:'rhymesMain1';
+        }
+        h6 {
+            font-size: 14px;
+            color: #999;
+			font-family:'rhymesMain1';
+        }
+        a {
+            font-size: 14px;
+            color: #007bff;
+            text-decoration: none;
+			font-family:'rhymesMain1';
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+		.emojionearea.emojionearea-inline
+		{
+			width:20%!important;
+			font-family:'rhymesMain1';
+		}
+		input[type="file"]
+		{
+			margin-top:-20px!important;
+		}
+        input[type="file"],
+        input[type="text"]
+         {
+			font-family:'rhymesMain1';
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+		.input-container {
+    display: flex;
+	padding-left:250px;
+	padding-right:250px;
+	margin-top:-30px;
+    align-items: center;
+}
+#textstart,.numberText
+{
+color:#666;
+font-family:'rhymesMain1';
+}
+select#bgchoose {
+    flex: 1;
+	font-family:'rhymesMain1';
+    margin-right: 10px;
+}
+
+input#text-input-e {
+    flex: 2;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none; /* Отключает стандартные стили */
+  -moz-appearance: none;
+  appearance: none;
+  width: 14px; /* Размер галочки */
+  height: 14px;
+  background-color: #fff; /* Цвет фона галочки */
+  border: 2px solid #666; /* Цвет границы галочки */
+  border-radius: 12px; /* Создание закругленных углов */
+  outline: none; /* Убирает контур фокуса при нажатии */
+}
+
+/* Стилизация галочки, когда она отмечена */
+input[type="checkbox"]:checked {
+  background-color: #666; /* Новый цвет фона для отмеченной галочки */
+  border-color: #666; /* Новый цвет границы для отмеченной галочки */
+}
+
+		#altfont
+		{
+			position:absolute;
+			margin-left:-112px;
+			margin-top:-41px;
+		}
+		#bebas
+		{
+			position:absolute;
+			margin-left:-164px;
+			margin-top:-41px;
+		}
+		
+		#waterMark
+		{
+			position:absolute;
+			margin-left:82px;
+			margin-top:-41px;
+		}
+		
+		#text-input-start
+		{
+			width: 8%!important;
+		}
+		select
+		{
+			width: 8%;
+            padding: 10px;
+            margin: 14px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+		}
+        input[type="color"] {
+            width: 40px;
+            height: 28px;
+            margin-top: 10px;
+            padding: 0;
+            border: none;
+            border-radius: 3px;
+        }
+        button {
+			font-family:"rhymesPseudo1";
+            background-color: #666;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #333;
+        }
+        .numberText {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        #image-canvas {
+			margin-top: 20px;
+            max-width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
+
+	<div class="header">
+    <img src="RhymesGenLogo.png" alt="RhymesGen">
+</div>
+
 <div class="container">
-	<h3>Генератор изображений в стиле цитат "Рифмы и Панчи"</h3>
-	<a style="font-size:14px;"href="https://vk.com/vkenhancer"> Классное расширение для ВК </a>
+	
 	<h4>Загрузить фон<h4>
 	<input type="file" id="image-upload" accept="image/*">
 	<h4>Основной текст<h4>
@@ -125,6 +230,7 @@
 		<option value="32">32px</option>
 		<option value="48">48px</option>
 		<option value="64" selected >64px</option>
+		<option value="72">72px</option>
 		<option value="128">128px</option>
 	</select>
 	<input type="color" id="text-color" name="color-picker" value="#ffffff">
@@ -140,6 +246,7 @@
 		<option value="32">32px</option>
 		<option value="48">48px</option>
 		<option value="64" selected >64px</option>
+		<option value="72">72px</option>
 		<option value="128">128px</option>
 	</select>
 	<input type="color" id="text-color1" name="color-picker" value="#ffffff">
@@ -155,6 +262,7 @@
 		<option value="32">32px</option>
 		<option value="48">48px</option>
 		<option value="64" selected >64px</option>
+		<option value="72">72px</option>
 		<option value="128">128px</option>
 	</select>
 	<input type="color" id="text-color2" name="color-picker" value="#ffffff">
@@ -170,12 +278,14 @@
 		<option value="32">32px</option>
 		<option value="48">48px</option>
 		<option value="64" selected >64px</option>
+		<option value="72">72px</option>
 		<option value="128">128px</option>
 	</select>
 	<input type="color" id="text-color3" name="color-picker" value="#ffffff">
 	</div>
 	
 <h4>Текст автора цитаты<h4>
+<h6 style="margin-top:-20px;">если обособить слово звездочками(*) то оно станет жирным<h6>
 	<div class="strokeSettingsP">
 	<input type="text" id="text-input4" placeholder="Введите текст">
     <select id="font-size4">
@@ -185,12 +295,14 @@
 		<option value="32">32px</option>
 		<option value="48">48px</option>
 		<option value="64">64px</option>
+		<option value="72">72px</option>
 		<option value="128">128px</option>
 	</select>
 	<input type="color" id="text-color4" name="color-picker" value="#ffffff">
-	<h6>если обособить слово звездочками(*) то оно станет жирным<h6>
+	
 	</div>
 	<h5>Изменить цвет блока кавычек<h5>
+	<div class="input-container">
 	 <select id="bgchoose">
 		<option value="Белый">Белый</option>
 		<option value="БелыйСтандарт">Белый(стандарт)</option>
@@ -205,12 +317,12 @@
 		<option value="Пустой">Без кавычек и эмодзи</option>
 	</select>
 	<input type="text" id="text-input-e" style="display:none;" placeholder="Введите эмодзи">
-	
+	</div>
 	<div>Стартовая позиция кавычек</div>
 	<input type="text" id="bg-input-start" placeholder="Стартовая позиция" value="0">
-	<h5 id="altfonttext" style="position:absolute;margin-top:-2px; margin-left:590px;">Убрать курсив у шрифта<h5><input type="checkbox" id="altfont">
-	<h5 id="bebastext" style="position:absolute;margin-top:-22px; margin-left:590px;">Использовать альтернативный шрифт<h5><input type="checkbox" id="bebas">
-	<h5 id="watertext" style="position:absolute;margin-top:18px; margin-left:590px;">Убрать вотермарку<h5><input type="checkbox" id="waterMark">
+	<h5 id="altfonttext">Убрать курсив у шрифта<h5><input type="checkbox" id="altfont">
+	<h5 id="bebastext">Использовать альтернативный шрифт<h5><input type="checkbox" id="bebas">
+	<h5 id="watertext">Убрать вотермарку<h5><input type="checkbox" id="waterMark">
     <button id="generate-button">Создать изображение</button>
 	<button id="save-button">Сохранить изображение</button>
     <br>
@@ -226,6 +338,11 @@
     });
 </script>
 
-	 
+	 <div class="footer">
+	 <h5 style="margin-top:-0px; padding-right:20px;">powered by </h5>
+	 <a href="https://vk.com/vkenhancer">
+    <img src="VKEnhancerButton.png" alt="VK Enhancer">
+	</a>
+</div>
 </body>
 </html>
