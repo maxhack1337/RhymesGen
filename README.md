@@ -1,6 +1,6 @@
 <div id="header" align="center">
   <img src="https://sun9-2.userapi.com/impg/UWahVjvhs4xS-JLlXLsfNZDW6K0sKVwFPfclsw/WWbAo7CA2B8.jpg?size=1280x1280&quality=96&sign=1743fcc5400245a070c78f11f2d5e4ca&type=album" width="500"/>
-  <h2>Возможность сгенерировать изображение-цитату в стиле "Рифмы и Панчи"</h2>
+  <h3>Возможность сгенерировать изображение-цитату в стиле "Рифмы и Панчи"</h3>
 </div>
 <div id="footer" align="center">
   <a href="https://maxhack1337.github.io/RhymesGen/">
