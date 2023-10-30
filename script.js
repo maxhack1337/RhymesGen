@@ -20,15 +20,32 @@ bgChooseSelect.addEventListener("change", function () {
 });
 });
 
+var bebasFont = new FontFace('bebasMain', 'url(bebasMain.woff2)');
 var customFontMain1 = new FontFace('rhymesMain1', 'url(rhymesMain1.woff2)');
 var customFontPseudo1 = new FontFace('rhymesPseudo1', 'url(rhymesPseudo1.woff2)');
 var customFontMain = new FontFace('rhymesMain', 'url(rhymesMain.woff2)');
 var customFontPseudo = new FontFace('rhymesPseudo', 'url(rhymesPseudo.woff2)');
 var useAltFont = false;
+var useBebas = false;
 
 var altFontCheckbox = document.getElementById("altfont");
 altFontCheckbox.addEventListener("change", function () {
+	useBebas = bebasCheckbox.checked;
     useAltFont = altFontCheckbox.checked;
+	if(document.getElementById("bebas").checked)
+	{
+		document.getElementById("bebas").checked = false;
+	}
+});
+
+var bebasCheckbox = document.getElementById("bebas");
+bebasCheckbox.addEventListener("change", function () {
+    useBebas = bebasCheckbox.checked;
+	useAltFont = altFontCheckbox.checked;
+	if(document.getElementById("altfont").checked)
+	{
+		document.getElementById("altfont").checked = false;
+	}
 });
 
 
@@ -37,8 +54,9 @@ var mainFontLoaded = false;
 var pseudoFontLoaded = false;
 var mainFontLoaded1 = false;
 var pseudoFontLoaded1 = false;
+var bebasLoaded = false;
 
-Promise.all([customFontMain.load(), customFontPseudo.load(),customFontMain1.load(), customFontPseudo1.load()]).then(function (loadedFonts) {
+Promise.all([customFontMain.load(), customFontPseudo.load(),customFontMain1.load(), customFontPseudo1.load(),bebasFont.load()]).then(function (loadedFonts) {
     loadedFonts.forEach(function (font) {
         document.fonts.add(font);
     });
@@ -56,10 +74,13 @@ Promise.all([customFontMain.load(), customFontPseudo.load(),customFontMain1.load
     if (loadedFonts[3].family === 'rhymesPseudo1') {
         pseudoFontLoaded1 = true;
     }
+	if (loadedFonts[4].family === 'bebasMain') {
+        bebasLoaded = true;
+    }
 });
 
 function generateImage() {
-    if (!(mainFontLoaded && pseudoFontLoaded && mainFontLoaded1 && pseudoFontLoaded1)) {
+    if (!(mainFontLoaded && pseudoFontLoaded && mainFontLoaded1 && pseudoFontLoaded1 && bebasLoaded)) {
         // Если один из шрифтов не загружен, не выполнять код
         return;
     }
@@ -167,44 +188,104 @@ function generateImage() {
                 // Настроить шрифт и цвет текста
                 if (useAltFont) {
     context.font = fontSize + "px 'rhymesMain1', Arial, sans-serif";
-} else {
+} if(!useAltFont && !useBebas) {
     context.font = fontSize + "px 'rhymesMain', Arial, sans-serif";
 }
-                context.fillStyle = textColor;
+if(useBebas)
+{
+	context.font = fontSize + "px 'bebasMain', Arial, sans-serif";
+}
+				var parts = text.split(/\((.*?)\)/); 
+				var textMetrics = context.measureText(text);
+				var startx = (canvas.width - textMetrics.width) / 2;
+				for (var i = 0; i < parts.length; i++) {
+    if (i % 2 === 0) {
+        context.fillStyle = textColor; // Вернуть ваш цвет по умолчанию
+    } else {
+        context.fillStyle = "white"; // Установить белый цвет для текста в скобках
+    }
+				var textMetricsP = context.measureText(parts[i]);
+				context.fillText(parts[i], startx, x); 
+				startx += textMetricsP.width;
+				}
 
                 // Нарисовать текст на холсте
-                var textMetrics = context.measureText(text);
-                context.fillText(text, (canvas.width - textMetrics.width) / 2, x);
+				
+            
 
                 if (useAltFont) {
     context.font = fontSize1 + "px 'rhymesMain1', Arial, sans-serif";
-} else {
+} if(!useAltFont && !useBebas) {
     context.font = fontSize1 + "px 'rhymesMain', Arial, sans-serif";
 }
-                context.fillStyle = textColor1;
-                var y1 = parseInt(fontSize1) + x + 10;
-                var textMetrics1 = context.measureText(text1);
-                context.fillText(text1, (canvas.width - textMetrics1.width) / 2, y1);
+if(useBebas)
+{
+	context.font = fontSize1 + "px 'bebasMain', Arial, sans-serif";
+}
+
+				
+				var y1 = parseInt(fontSize1) + x + 10;
+				var parts1 = text1.split(/\((.*?)\)/); 
+				var textMetrics1 = context.measureText(text1);
+				var startx1 = (canvas.width - textMetrics1.width) / 2;
+				for (var i = 0; i < parts1.length; i++) {
+    if (i % 2 === 0) {
+        context.fillStyle = textColor1; // Вернуть ваш цвет по умолчанию
+    } else {
+        context.fillStyle = "white"; // Установить белый цвет для текста в скобках
+    }
+				var textMetricsP1 = context.measureText(parts1[i]);
+				context.fillText(parts1[i], startx1, y1); 
+				startx1 += textMetricsP1.width;
+				}
 
                 if (useAltFont) {
     context.font = fontSize2 + "px 'rhymesMain1', Arial, sans-serif";
-} else {
+} if(!useAltFont && !useBebas) {
     context.font = fontSize2 + "px 'rhymesMain', Arial, sans-serif";
 }
-                context.fillStyle = textColor2;
-                var y2 = parseInt(fontSize2) + parseInt(fontSize1) + x + 20;
-                var textMetrics2 = context.measureText(text2);
-                context.fillText(text2, (canvas.width - textMetrics2.width) / 2, y2);
+if(useBebas)
+{
+	context.font = fontSize2 + "px 'bebasMain', Arial, sans-serif";
+}
+                var y2 = parseInt(fontSize1) + parseInt(fontSize2) + x + 20;
+				var parts2 = text2.split(/\((.*?)\)/); 
+				var textMetrics2 = context.measureText(text2);
+				var startx2 = (canvas.width - textMetrics2.width) / 2;
+				for (var i = 0; i < parts2.length; i++) {
+    if (i % 2 === 0) {
+        context.fillStyle = textColor2; // Вернуть ваш цвет по умолчанию
+    } else {
+        context.fillStyle = "white"; // Установить белый цвет для текста в скобках
+    }
+				var textMetricsP2 = context.measureText(parts2[i]);
+				context.fillText(parts2[i], startx2, y2); 
+				startx2 += textMetricsP2.width;
+				}
 
                 if (useAltFont) {
     context.font = fontSize3 + "px 'rhymesMain1', Arial, sans-serif";
-} else {
+} if(!useAltFont && !useBebas) {
     context.font = fontSize3 + "px 'rhymesMain', Arial, sans-serif";
 }
-                context.fillStyle = textColor3;
-                var y3 = parseInt(fontSize3) + parseInt(fontSize2) + parseInt(fontSize1) + x + 30;
-                var textMetrics3 = context.measureText(text3);
-                context.fillText(text3, (canvas.width - textMetrics3.width) / 2, y3);
+if(useBebas)
+{
+	context.font = fontSize3 + "px 'bebasMain', Arial, sans-serif";
+}
+                var y3 = parseInt(fontSize3) + parseInt(fontSize1) + parseInt(fontSize2) + x + 30;
+				var parts3 = text3.split(/\((.*?)\)/); 
+				var textMetrics3 = context.measureText(text3);
+				var startx3 = (canvas.width - textMetrics3.width) / 2;
+				for (var i = 0; i < parts3.length; i++) {
+    if (i % 2 === 0) {
+        context.fillStyle = textColor3; // Вернуть ваш цвет по умолчанию
+    } else {
+        context.fillStyle = "white"; // Установить белый цвет для текста в скобках
+    }
+				var textMetricsP3 = context.measureText(parts3[i]);
+				context.fillText(parts3[i], startx3, y3); 
+				startx3 += textMetricsP3.width;
+				}
 				
 				context.fillStyle = textColor4;
 context.fillStyle = textColor4;
@@ -240,14 +321,22 @@ for (var i = 0; i < textParts.length; i++) {
     if (useRhymesMainFont) {
         if (useAltFont) {
     context.font = fontSize4 + "px 'rhymesMain1', Arial, sans-serif";
-} else {
+} if(!useAltFont && !useBebas) {
     context.font = fontSize4 + "px 'rhymesMain', Arial, sans-serif";
+}
+if(useBebas)
+{
+	context.font = fontSize4 + "px 'rhymesMain1', Arial, sans-serif";
 }
     } else {
         if (useAltFont) {
     context.font = fontSize4 + "px 'rhymesPseudo1', Arial, sans-serif";
-} else {
+} if(!useAltFont && !useBebas) {
     context.font = fontSize4 + "px 'rhymesPseudo', Arial, sans-serif";
+}
+if(useBebas)
+{
+	context.font = fontSize4 + "px 'rhymesPseudo1', Arial, sans-serif";
 }
     }
 
@@ -272,14 +361,22 @@ for (var i = 0; i < textParts.length; i++) {
     if (useRhymesMainFont) {
         if (useAltFont) {
     context.font = fontSize4 + "px 'rhymesMain1', Arial, sans-serif";
-} else {
+} if(!useAltFont && !useBebas) {
     context.font = fontSize4 + "px 'rhymesMain', Arial, sans-serif";
+}
+if(useBebas)
+{
+	context.font = fontSize4 + "px 'rhymesMain1', Arial, sans-serif";
 }
     } else {
         if (useAltFont) {
     context.font = fontSize4 + "px 'rhymesPseudo1', Arial, sans-serif";
-} else {
+} if(!useAltFont && !useBebas) {
     context.font = fontSize4 + "px 'rhymesPseudo', Arial, sans-serif";
+}
+if(useBebas)
+{
+	context.font = fontSize4 + "px 'rhymesPseudo1', Arial, sans-serif";
 }
     }
 
@@ -298,14 +395,22 @@ for (var i = 0; i < textParts.length; i++) {
     if (useRhymesMainFont) {
         if (useAltFont) {
     context.font = fontSize4 + "px 'rhymesMain1', Arial, sans-serif";
-} else {
+} if(!useAltFont && !useBebas) {
     context.font = fontSize4 + "px 'rhymesMain', Arial, sans-serif";
+}
+if(useBebas)
+{
+	context.font = fontSize4 + "px 'rhymesMain1', Arial, sans-serif";
 }
     } else {
         if (useAltFont) {
     context.font = fontSize4 + "px 'rhymesPseudo1', Arial, sans-serif";
-} else {
+} if(!useAltFont && !useBebas) {
     context.font = fontSize4 + "px 'rhymesPseudo', Arial, sans-serif";
+}
+if(useBebas)
+{
+	context.font = fontSize4 + "px 'rhymesPseudo1', Arial, sans-serif";
 }
     }
 
@@ -334,6 +439,51 @@ for (var i = 0; i < textParts.length; i++) {
 
 // Обработчик для кнопки
 document.getElementById("generate-button").addEventListener("click", generateImage);
+document.getElementById("altfonttext").addEventListener("click", function(){
+	if(!document.getElementById("altfont").checked)
+	{
+		document.getElementById("altfont").checked = true;
+	}
+	else
+	{
+		document.getElementById("altfont").checked = false;
+	}
+	if(document.getElementById("bebas").checked)
+	{
+		document.getElementById("bebas").checked = false;
+	}
+	useBebas = bebasCheckbox.checked;
+    useAltFont = altFontCheckbox.checked;
+});
+
+document.getElementById("bebastext").addEventListener("click", function(){
+	if(!document.getElementById("bebas").checked)
+	{
+		document.getElementById("bebas").checked = true;
+	}
+	else
+	{
+		document.getElementById("bebas").checked = false;
+	}
+	if(document.getElementById("altfont").checked)
+	{
+		document.getElementById("altfont").checked = false;
+	}
+	useBebas = bebasCheckbox.checked;
+    useAltFont = altFontCheckbox.checked;
+});
+
+document.getElementById("watertext").addEventListener("click", function(){
+	if(!document.getElementById("waterMark").checked)
+	{
+		document.getElementById("waterMark").checked = true;
+	}
+	else
+	{
+		document.getElementById("waterMark").checked = false;
+	}
+});
+
 
 document.addEventListener("click", function() {
   generateImage();

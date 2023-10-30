@@ -34,7 +34,7 @@
 	{
 	margin-top:6px;
 	}
-	h3,h4,h5
+	h3,h4,h5,h6, .numberText, #textstart
 	{
 		font-family: rhymesMain;
 	}
@@ -65,15 +65,21 @@
 	}
 	#generate-button
 	{
-	margin-top:20px;
+	margin-top:40px;
 	}
 	#waterMark
 	{
 		position:absolute;
-		margin-top:-2px;
+		margin-top:18px;
 		margin-left:91px;
 	}
 	#altfont
+	{
+		position:absolute;
+		margin-top:-2px;
+		margin-left:-69px;
+	}
+	#bebas
 	{
 		position:absolute;
 		margin-top:-22px;
@@ -106,7 +112,8 @@
 	<h4>Загрузить фон<h4>
 	<input type="file" id="image-upload" accept="image/*">
 	<h4>Основной текст<h4>
-	<div>Стартовая позиция текста</div>
+	<h6 style="margin-top:-20px;">если обособить слово скобочками - () то оно станет белого цвета</h6>
+	<div id="textstart">Стартовая позиция текста</div>
 	<input type="text" id="text-input-start" placeholder="Стартовая позиция" value="950">
     <div class="numberText">1 строка</div>
 	<div class="strokeSettings">
@@ -201,8 +208,9 @@
 	
 	<div>Стартовая позиция кавычек</div>
 	<input type="text" id="bg-input-start" placeholder="Стартовая позиция" value="0">
-	<h5 style="position:absolute;margin-top:-22px; margin-left:590px;">Убрать курсив у шрифта<h5><input type="checkbox" id="altfont">
-	<h5 style="position:absolute;margin-top:-2px; margin-left:590px;">Убрать вотермарку<h5><input type="checkbox" id="waterMark">
+	<h5 id="altfonttext" style="position:absolute;margin-top:-2px; margin-left:590px;">Убрать курсив у шрифта<h5><input type="checkbox" id="altfont">
+	<h5 id="bebastext" style="position:absolute;margin-top:-22px; margin-left:590px;">Использовать альтернативный шрифт<h5><input type="checkbox" id="bebas">
+	<h5 id="watertext" style="position:absolute;margin-top:18px; margin-left:590px;">Убрать вотермарку<h5><input type="checkbox" id="waterMark">
     <button id="generate-button">Создать изображение</button>
 	<button id="save-button">Сохранить изображение</button>
     <br>

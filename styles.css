@@ -14,3 +14,8 @@
     font-family: 'rhymesMain1';
     src: url('rhymesMain1.woff2') format('woff2');
 	}
+	
+@font-face {
+    font-family: 'bebasMain';
+    src: url('bebasMain.woff2') format('woff2');
+	}
