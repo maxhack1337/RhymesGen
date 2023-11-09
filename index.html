@@ -11,7 +11,9 @@
     <title>Rhymes Image Generator by @notmaxhack</title>
 	 <style>
         body {
-            background-color: #f2f2f2;
+            background-color:#f2f2f2;
+			background-repeat: no-repeat;
+			background-position: 50% 0%; 
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
@@ -52,8 +54,9 @@
 	margin-top:-30px;
 }
 .header img[alt="RhymesGen"] {
-    width: 800px;
-    height: 280px;
+    width: 600px;
+    height: 210px;
+	margin-top:320px;
 }
         .container {
             background-color: #fff;
@@ -202,12 +205,21 @@ input[type="checkbox"]:checked {
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+		#RhymeImageRand
+		{
+			width:624px;
+			height:375px;
+			position:absolute;
+			z-index:0;
+			top:0px;
+		}
     </style>
 </head>
 <body>
 
 	<div class="header">
-    <img src="RhymesGenLogo.png" alt="RhymesGen">
+    <img style="z-index:1;" src="RhymesGenLogo.png" alt="RhymesGen">
+	<div style="margin-left:-80px;"id="RhymeImageRand"></div>
 </div>
 
 <div class="container">
@@ -352,6 +364,47 @@ input[type="checkbox"]:checked {
         });
     });
 </script>
+ <script>
+ document.addEventListener('DOMContentLoaded', function() {
+        // Массив с именами файлов изображений
+        var images = [
+            "image1.png",
+            "image2.png",
+            "image3.png",
+			"image4.png",
+			"image5.png",
+			"image6.png",
+			"image7.png",
+			"image8.png",
+			"image9.png",
+			"image10.png",
+			"image11.png",
+			"image12.png",
+			"image13.png",
+			"image14.png",
+			"image15.png"
+        ];
+
+        // Выбор случайного изображения
+        var randomImage = images[Math.floor(Math.random() * images.length)];
+
+        // Полный путь к выбранному изображению
+        var imagePath = "bg/" + randomImage;
+
+        // Создание нового Image объекта
+        var img = new Image();
+
+        // Загрузка изображения в виде data URL
+        img.onload = function() {
+		var rhymeImageRand = document.getElementById('RhymeImageRand');
+            rhymeImageRand.style.background = 'url(' + img.src + ')';
+			rhymeImageRand.style.backgroundRepeat = 'no-repeat';
+			rhymeImageRand.style.backgroundSize = 'cover';
+        };
+
+        img.src = imagePath;
+		});
+    </script>
 
 	 <div class="footer">
 	 <h5 style="margin-top:-0px; padding-right:20px;">powered by </h5>
