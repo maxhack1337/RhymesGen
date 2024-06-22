@@ -8,7 +8,7 @@
   </a>
   <br>
   <a href="https://github.com/maxhack1337/vk_enhancer">
-  <img src="https://img.shields.io/badge/-VK%20ENHANCER-blue?style=for-the-badge&logo=vk&color=0077FF"></img>
+  <img src="https://img.shields.io/badge/-VK%20TOOLS-blue?style=for-the-badge&logo=vk&color=0077FF"></img>
   </a>
 </div>
 
